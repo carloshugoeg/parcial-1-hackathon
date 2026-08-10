@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node --test test/",
+    "test": "node --test",
     "reiniciar": "node --eval \"import('node:fs').then(fs => { fs.copyFileSync('data/semilla.json', 'data/datos.json'); console.log('Datos reiniciados desde la semilla.'); })\""
   },
   "license": "MIT",
