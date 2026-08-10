@@ -8,5 +8,8 @@ data/datos.json
 .env
 .env.*
 
+# Configuración local del editor / herramientas
+.claude/
+
 # Sistema operativo
 .DS_Store

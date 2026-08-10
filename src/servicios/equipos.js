@@ -62,6 +62,8 @@ export function listarEquipos(datos) {
       nombre: equipo.nombre,
       desafio: desafio ? { id: desafio.id, titulo: desafio.titulo, fechaLimite: desafio.fechaLimite } : null,
       mentor: mentor ? mentor.nombre : null,
+      mentorId: equipo.mentorId,
+      integrantesIds: [...equipo.integrantesIds],
       integrantes: equipo.integrantesIds.map(
         (id) => datos.usuarios.find((u) => u.id === id)?.nombre ?? 'Desconocido'
       ),
