@@ -1,0 +1,80 @@
+{
+  "configuracion": {
+    "nombreEvento": "Hackathon de Innovación Tecnológica URL",
+    "maxIntegrantesPorEquipo": 4
+  },
+  "usuarios": [
+    { "id": "u1", "usuario": "lucia", "pin": "1234", "nombre": "Lucía Marroquín", "rol": "organizador" },
+    { "id": "u2", "usuario": "ernesto", "pin": "1234", "nombre": "Ernesto Díaz", "rol": "juez" },
+    { "id": "u3", "usuario": "silvia", "pin": "1234", "nombre": "Silvia Ochoa", "rol": "juez" },
+    { "id": "u4", "usuario": "marta", "pin": "1234", "nombre": "Marta Solís", "rol": "mentor" },
+    { "id": "u5", "usuario": "carlos", "pin": "1234", "nombre": "Carlos Escobar", "rol": "participante" },
+    { "id": "u6", "usuario": "ana", "pin": "1234", "nombre": "Ana López", "rol": "participante" },
+    { "id": "u7", "usuario": "pedro", "pin": "1234", "nombre": "Pedro Ramírez", "rol": "participante" },
+    { "id": "u8", "usuario": "maria", "pin": "1234", "nombre": "María Castillo", "rol": "participante" },
+    { "id": "u9", "usuario": "jorge", "pin": "1234", "nombre": "Jorge Batres", "rol": "participante" }
+  ],
+  "desafios": [
+    {
+      "id": "d1",
+      "titulo": "Movilidad urbana inteligente",
+      "descripcion": "Diseñar una solución tecnológica que mejore el transporte de estudiantes hacia el campus: rutas compartidas, información de buses en tiempo real o incentivos para transporte sostenible.",
+      "fechaLimite": "2026-12-01T18:00:00-06:00"
+    },
+    {
+      "id": "d2",
+      "titulo": "Gestión de residuos en el campus",
+      "descripcion": "Crear una herramienta que ayude a reducir, clasificar o dar seguimiento a los residuos generados dentro de la universidad.",
+      "fechaLimite": "2026-08-01T18:00:00-06:00"
+    }
+  ],
+  "equipos": [
+    { "id": "e1", "nombre": "Los Compiladores", "desafioId": "d1", "mentorId": "u4", "integrantesIds": ["u5", "u6"] },
+    { "id": "e2", "nombre": "Bit a Bit", "desafioId": "d2", "mentorId": null, "integrantesIds": ["u7", "u8"] },
+    { "id": "e3", "nombre": "Runtime Terror", "desafioId": "d1", "mentorId": "u4", "integrantesIds": ["u9"] }
+  ],
+  "entregas": [
+    {
+      "id": "n1",
+      "equipoId": "e2",
+      "desafioId": "d2",
+      "urlRepositorio": "https://github.com/bit-a-bit/residuos-campus",
+      "descripcion": "Aplicación web que registra los puntos de reciclaje del campus y asigna rutas de recolección según el nivel de llenado reportado por los estudiantes.",
+      "fecha": "2026-07-30T15:00:00-06:00",
+      "registradaPorId": "u7"
+    }
+  ],
+  "evaluaciones": [],
+  "documentacion": [
+    {
+      "id": "doc1",
+      "tema": "Reglas del evento",
+      "palabrasClave": ["reglas", "reglamento", "normas", "integrantes", "librerias"],
+      "contenido": "Cada equipo puede tener entre 1 y 4 integrantes y cada participante pertenece a un solo equipo. Se permite usar librerías de código abierto citándolas en la documentación. El código copiado sin cita se reporta al juez, quien decide la penalización."
+    },
+    {
+      "id": "doc2",
+      "tema": "Entregas de proyectos",
+      "palabrasClave": ["entrega", "entregar", "repositorio", "subir", "proyecto", "github"],
+      "contenido": "La entrega se realiza registrando la URL del repositorio público de GitHub y una descripción del proyecto, antes de la fecha límite del desafío (inclusive). Mientras el desafío siga abierto, el equipo puede reemplazar su entrega."
+    },
+    {
+      "id": "doc3",
+      "tema": "Evaluación de los jueces",
+      "palabrasClave": ["evaluacion", "rubrica", "calificacion", "puntaje", "nota", "califica", "criterios"],
+      "contenido": "Los jueces califican con una rúbrica de cuatro criterios: innovación, funcionalidad, calidad técnica y presentación, cada uno de 0 a 25 puntos. La nota final es la suma automática de los criterios (máximo 100 puntos)."
+    },
+    {
+      "id": "doc4",
+      "tema": "Mentores",
+      "palabrasClave": ["mentor", "mentores", "asesoria", "orientacion"],
+      "contenido": "Cada equipo puede tener un mentor asignado por la organización. El mentor orienta sobre el enfoque del proyecto y resuelve dudas conceptuales, pero no escribe código del equipo."
+    },
+    {
+      "id": "doc5",
+      "tema": "Agenda del evento",
+      "palabrasClave": ["horario", "agenda", "cronograma", "inicio", "cierre", "premiacion"],
+      "contenido": "El evento inicia el 30 de noviembre a las 08:00. Las entregas cierran según la fecha límite de cada desafío y la premiación es el 2 de diciembre a las 17:00 en el auditorio principal."
+    }
+  ]
+}
