@@ -1,0 +1,12 @@
+# Dependencias
+node_modules/
+
+# Datos de ejecución (se regeneran desde data/semilla.json)
+data/datos.json
+
+# Variables de entorno y credenciales
+.env
+.env.*
+
+# Sistema operativo
+.DS_Store

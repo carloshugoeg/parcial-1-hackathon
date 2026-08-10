@@ -1,0 +1,16 @@
+{
+  "name": "parcial-1-hackathon",
+  "version": "1.0.0",
+  "description": "Sistema web para administrar el Hackathon de Innovación Tecnológica URL: equipos, participantes, mentores, desafíos, entregas, evaluaciones y un agente de IA de apoyo.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/",
+    "reiniciar": "node --eval \"import('node:fs').then(fs => { fs.copyFileSync('data/semilla.json', 'data/datos.json'); console.log('Datos reiniciados desde la semilla.'); })\""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
