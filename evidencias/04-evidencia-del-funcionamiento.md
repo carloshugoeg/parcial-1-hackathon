@@ -77,6 +77,12 @@ Recorrido realizado en Chrome sobre `http://localhost:3000`:
 6. **Caso de error visible en la demo**: el desafío «Gestión de residuos»
    está vencido en la semilla, por lo que cualquier intento de reemplazo de la
    entrega de Bit a Bit se rechaza con el mensaje de fecha límite.
+7. **Entregas de ejemplo con repositorios reales**: los tres equipos de la
+   semilla tienen entregas registradas a proyectos públicos verificables —
+   Los Compiladores → `graphhopper/graphhopper`, Bit a Bit →
+   `openlittermap/openlittermap-web`, Runtime Terror →
+   `Project-OSRM/osrm-backend` — para que el detalle de cada entrega y sus
+   enlaces se puedan abrir de verdad desde la interfaz del juez.
 
 > Capturas de pantalla adicionales pueden tomarse siguiendo el «guion de
 > demostración sugerido» del README.

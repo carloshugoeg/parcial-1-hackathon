@@ -47,12 +47,30 @@
   "entregas": [
     {
       "id": "n1",
+      "equipoId": "e1",
+      "desafioId": "d1",
+      "urlRepositorio": "https://github.com/graphhopper/graphhopper",
+      "descripcion": "Motor de ruteo que calcula el trayecto más rápido hacia el campus combinando bus, bicicleta y caminata, con capa de mapa para visualizar la ruta sugerida.",
+      "fecha": "2026-07-28T14:30:00-06:00",
+      "registradaPorId": "u5"
+    },
+    {
+      "id": "n2",
       "equipoId": "e2",
       "desafioId": "d2",
-      "urlRepositorio": "https://github.com/codeforgermany/click_that_hood",
-      "descripcion": "Aplicación web que registra los puntos de reciclaje del campus y asigna rutas de recolección según el nivel de llenado reportado por los estudiantes.",
+      "urlRepositorio": "https://github.com/openlittermap/openlittermap-web",
+      "descripcion": "Aplicación web que registra los puntos de reciclaje del campus y permite reportar su nivel de llenado desde el teléfono, con un mapa de calor de las zonas con más residuos.",
       "fecha": "2026-07-30T15:00:00-06:00",
       "registradaPorId": "u7"
+    },
+    {
+      "id": "n3",
+      "equipoId": "e3",
+      "desafioId": "d1",
+      "urlRepositorio": "https://github.com/Project-OSRM/osrm-backend",
+      "descripcion": "Servicio de ruteo para peatones y ciclistas que calcula rutas seguras hacia el campus y estima el tiempo de viaje según el modo de transporte elegido.",
+      "fecha": "2026-08-05T09:15:00-06:00",
+      "registradaPorId": "u9"
     }
   ],
   "evaluaciones": [],
