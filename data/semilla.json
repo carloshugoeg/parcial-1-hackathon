@@ -19,12 +19,23 @@
       "id": "d1",
       "titulo": "Movilidad urbana inteligente",
       "descripcion": "Diseñar una solución tecnológica que mejore el transporte de estudiantes hacia el campus: rutas compartidas, información de buses en tiempo real o incentivos para transporte sostenible.",
+      "detalle": "Contexto: cerca del 60 % de los estudiantes llega al campus en transporte público y reporta esperas de más de 25 minutos por falta de información de rutas y horarios.\n\nReto: construir una aplicación web que ayude a los estudiantes a planificar su viaje hacia el campus. La solución debe incluir al menos: (1) visualización de rutas o paradas sobre un mapa, (2) alguna forma de reportar o consultar el estado del transporte en tiempo real, y (3) un incentivo para el transporte sostenible (carpool, bicicleta o caminata).\n\nEntregables: repositorio público de GitHub con el código fuente, instrucciones de ejecución en el README y una descripción del proyecto al momento de la entrega.\n\nSe valorará el uso de datos abiertos y de librerías de código abierto correctamente citadas.",
+      "recursos": [
+        "https://github.com/opentripplanner/OpenTripPlanner",
+        "https://github.com/google/transit",
+        "https://github.com/Leaflet/Leaflet"
+      ],
       "fechaLimite": "2026-12-01T18:00:00-06:00"
     },
     {
       "id": "d2",
       "titulo": "Gestión de residuos en el campus",
       "descripcion": "Crear una herramienta que ayude a reducir, clasificar o dar seguimiento a los residuos generados dentro de la universidad.",
+      "detalle": "Contexto: la universidad genera más de 2 toneladas de residuos al mes y solo una fracción se clasifica correctamente en los puntos de reciclaje.\n\nReto: construir una herramienta digital que apoye la gestión de residuos dentro del campus. La solución debe abordar al menos uno de estos frentes: registro y mapa de puntos de reciclaje, reporte del nivel de llenado por parte de los estudiantes, o métricas de recolección para el equipo de mantenimiento.\n\nEntregables: repositorio público de GitHub con el código fuente, instrucciones de ejecución en el README y una descripción del proyecto al momento de la entrega.\n\nSe valorará que la captura de datos funcione también desde el teléfono.",
+      "recursos": [
+        "https://github.com/getodk/collect",
+        "https://github.com/Leaflet/Leaflet"
+      ],
       "fechaLimite": "2026-08-01T18:00:00-06:00"
     }
   ],
@@ -38,7 +49,7 @@
       "id": "n1",
       "equipoId": "e2",
       "desafioId": "d2",
-      "urlRepositorio": "https://github.com/bit-a-bit/residuos-campus",
+      "urlRepositorio": "https://github.com/codeforgermany/click_that_hood",
       "descripcion": "Aplicación web que registra los puntos de reciclaje del campus y asigna rutas de recolección según el nivel de llenado reportado por los estudiantes.",
       "fecha": "2026-07-30T15:00:00-06:00",
       "registradaPorId": "u7"

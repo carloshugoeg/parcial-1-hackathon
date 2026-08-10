@@ -8,6 +8,7 @@ const estado = {
   gafetes: [],
   seleccionadoId: null,
   vista: null,
+  desafioSeleccionadoId: null,
   datos: { equipos: [], desafios: [], entregas: [], usuarios: [] },
   chat: [],
   mensaje: null
@@ -86,6 +87,17 @@ document.addEventListener('click', async (evento) => {
 
   if (accion === 'cambiar-vista') {
     estado.vista = boton.dataset.vista;
+    estado.desafioSeleccionadoId = null;
+    renderizar();
+  }
+
+  if (accion === 'ver-desafio') {
+    estado.desafioSeleccionadoId = boton.dataset.id;
+    renderizar();
+  }
+
+  if (accion === 'volver-desafios') {
+    estado.desafioSeleccionadoId = null;
     renderizar();
   }
 
@@ -162,12 +174,22 @@ const MANEJADORES = {
     return 'Mentor asignado al equipo.';
   },
   'crear-desafio': async (campos) => {
+    const recursos = campos.recursos
+      .split('\n')
+      .map((linea) => linea.trim())
+      .filter((linea) => linea.length > 0);
     const desafio = await llamarApi('/desafios', {
       metodo: 'POST',
-      cuerpo: { ...campos, fechaLimite: new Date(campos.fechaLimite).toISOString() }
+      cuerpo: {
+        titulo: campos.titulo,
+        descripcion: campos.descripcion,
+        detalle: campos.detalle,
+        recursos,
+        fechaLimite: new Date(campos.fechaLimite).toISOString()
+      }
     });
     await cargarDatos();
-    return `Desafío "${desafio.titulo}" publicado.`;
+    return `Caso "${desafio.titulo}" publicado: ya es visible para todos los roles.`;
   }
 };
 

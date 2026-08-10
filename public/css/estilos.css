@@ -465,6 +465,34 @@ th {
 
 .acciones-tarjeta { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
 
+/* ---------- Detalle del caso ---------- */
+
+.volver {
+  background: transparent;
+  color: var(--tinta-suave);
+  border: 1px solid var(--linea);
+  margin-bottom: 14px;
+}
+
+.texto-detalle { white-space: pre-wrap; }
+
+.tarjeta h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  letter-spacing: -0.015em;
+}
+
+.recursos {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recursos li { margin: 4px 0; }
+
+.recursos a {
+  color: var(--acento);
+  word-break: break-all;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }

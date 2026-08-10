@@ -112,12 +112,14 @@ export function vistaRegistro(estado) {
 const PESTANAS_POR_ROL = {
   participante: [
     ['equipo', 'Mi equipo'],
+    ['desafios', 'Desafíos'],
     ['entrega', 'Entregar proyecto'],
     ['calificacion', 'Mi calificación'],
     ['agente', 'Agente IA']
   ],
   juez: [
     ['entregas', 'Entregas'],
+    ['desafios', 'Desafíos'],
     ['agente', 'Agente IA']
   ],
   organizador: [
@@ -128,6 +130,7 @@ const PESTANAS_POR_ROL = {
   ],
   mentor: [
     ['equipos', 'Mis equipos'],
+    ['desafios', 'Desafíos'],
     ['agente', 'Agente IA']
   ]
 };
@@ -170,6 +173,9 @@ function contenidoDeVista(estado) {
   if (estado.vista === 'agente') {
     return vistaAgente(estado);
   }
+  if (estado.vista === 'desafios') {
+    return vistaDesafios(estado);
+  }
   if (rol === 'participante') {
     if (estado.vista === 'equipo') return vistaMiEquipo(estado);
     if (estado.vista === 'entrega') return vistaEntregar(estado);
@@ -180,7 +186,6 @@ function contenidoDeVista(estado) {
   }
   if (rol === 'organizador') {
     if (estado.vista === 'equipos') return vistaEquiposOrganizador(estado);
-    if (estado.vista === 'desafios') return vistaDesafiosOrganizador(estado);
     if (estado.vista === 'entregas') return vistaEntregasOrganizador(estado);
   }
   if (rol === 'mentor') {
@@ -399,34 +404,82 @@ function vistaEquiposOrganizador(estado) {
     </div>`;
 }
 
-function vistaDesafiosOrganizador(estado) {
-  return `
-    <div class="tarjetas">
-      ${estado.datos.desafios
-        .map(
-          (d) => `
-        <section class="tarjeta">
-          <span class="etiqueta ${d.abierto ? 'abierto' : 'cerrado'}">${d.abierto ? 'Abierto' : 'Cerrado'}</span>
-          <h3>${escaparHtml(d.titulo)}</h3>
-          <p class="meta">${escaparHtml(d.descripcion)}</p>
-          <p class="meta">Equipos: ${d.equipos.map(escaparHtml).join(', ') || 'ninguno'}</p>
-          <p class="meta">Cierra: ${fechaLocal(d.fechaLimite)}</p>
-          ${cuentaRegresiva(d.fechaLimite)}
-        </section>`
-        )
-        .join('')}
+function vistaDesafios(estado) {
+  const seleccionado = estado.datos.desafios.find((d) => d.id === estado.desafioSeleccionadoId);
+  if (seleccionado) {
+    return vistaDetalleDesafio(estado, seleccionado);
+  }
+  const tarjetas = estado.datos.desafios
+    .map(
+      (d) => `
+    <section class="tarjeta">
+      <span class="etiqueta ${d.abierto ? 'abierto' : 'cerrado'}">${d.abierto ? 'Abierto' : 'Cerrado'}</span>
+      <h3>${escaparHtml(d.titulo)}</h3>
+      <p class="meta">${escaparHtml(d.descripcion)}</p>
+      <p class="meta">Equipos inscritos: ${d.equipos.length}</p>
+      <p class="meta">Cierra: ${fechaLocal(d.fechaLimite)}</p>
+      ${cuentaRegresiva(d.fechaLimite)}
+      <div class="acciones-tarjeta">
+        <button type="button" data-accion="ver-desafio" data-id="${d.id}">Ver detalle del caso</button>
+      </div>
+    </section>`
+    )
+    .join('');
+
+  const formularioPublicar =
+    estado.sesion.perfil.rol === 'organizador'
+      ? `
       <section class="tarjeta">
-        <h3>Crear desafío</h3>
+        <h3>Publicar un caso</h3>
         <form data-formulario="crear-desafio">
           <label for="tituloDesafio">Título</label>
           <input id="tituloDesafio" name="titulo" minlength="5" maxlength="80" required />
-          <label for="descripcionDesafio">Descripción</label>
-          <textarea id="descripcionDesafio" name="descripcion" rows="3" minlength="20" maxlength="500" required></textarea>
+          <label for="descripcionDesafio">Resumen (aparece en la lista)</label>
+          <textarea id="descripcionDesafio" name="descripcion" rows="2" minlength="20" maxlength="500" required></textarea>
+          <label for="detalleDesafio">Detalle del caso (contexto, reto y entregables)</label>
+          <textarea id="detalleDesafio" name="detalle" rows="6" minlength="30" maxlength="2000" required></textarea>
+          <label for="recursosDesafio">Recursos de apoyo (un enlace https:// por línea, máx. 5, opcional)</label>
+          <textarea id="recursosDesafio" name="recursos" rows="3" placeholder="https://github.com/Leaflet/Leaflet"></textarea>
           <label for="fechaLimiteDesafio">Fecha límite</label>
           <input id="fechaLimiteDesafio" name="fechaLimite" type="datetime-local" required />
-          <div class="acciones-tarjeta"><button type="submit">Publicar desafío</button></div>
+          <div class="acciones-tarjeta"><button type="submit">Publicar caso</button></div>
         </form>
-      </section>
+      </section>`
+      : '';
+
+  return `<div class="tarjetas">${tarjetas}${formularioPublicar}</div>`;
+}
+
+function vistaDetalleDesafio(estado, desafio) {
+  const equiposInscritos = estado.datos.equipos.filter((e) => e.desafio?.id === desafio.id);
+  const recursos = (desafio.recursos ?? [])
+    .map(
+      (url) =>
+        `<li><a href="${escaparHtml(url)}" target="_blank" rel="noreferrer">${escaparHtml(url)}</a></li>`
+    )
+    .join('');
+  return `
+    <button type="button" class="volver" data-accion="volver-desafios">← Volver a desafíos</button>
+    <div class="tarjeta">
+      <span class="etiqueta ${desafio.abierto ? 'abierto' : 'cerrado'}">${desafio.abierto ? 'Abierto' : 'Cerrado'}</span>
+      <h2>${escaparHtml(desafio.titulo)}</h2>
+      <p class="meta">Cierra: ${fechaLocal(desafio.fechaLimite)}</p>
+      ${cuentaRegresiva(desafio.fechaLimite)}
+      <p>${escaparHtml(desafio.descripcion)}</p>
+      <h3>Detalle del caso</h3>
+      <p class="texto-detalle">${escaparHtml(desafio.detalle ?? 'La organización aún no publica el detalle de este caso.')}</p>
+      ${recursos ? `<h3>Recursos de apoyo</h3><ul class="recursos">${recursos}</ul>` : ''}
+      <h3>Equipos inscritos</h3>
+      ${
+        equiposInscritos.length === 0
+          ? '<p class="meta">Todavía no hay equipos asignados a este desafío.</p>'
+          : `<ul class="recursos">${equiposInscritos
+              .map(
+                (e) =>
+                  `<li>${escaparHtml(e.nombre)} — ${e.tieneEntrega ? 'ya entregó' : 'sin entrega'}</li>`
+              )
+              .join('')}</ul>`
+      }
     </div>`;
 }
 

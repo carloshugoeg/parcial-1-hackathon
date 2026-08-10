@@ -22,6 +22,20 @@ export function validarUrlDeRepositorio(url) {
   return urlLimpia;
 }
 
+export function validarUrlPublica(url, nombreCampo = 'url') {
+  const urlLimpia = validarTexto(url, nombreCampo, { max: 300 });
+  let analizada;
+  try {
+    analizada = new URL(urlLimpia);
+  } catch {
+    throw new ErrorDeSolicitud(`El campo "${nombreCampo}" debe ser una URL válida.`);
+  }
+  if (analizada.protocol !== 'https:') {
+    throw new ErrorDeSolicitud(`El campo "${nombreCampo}" debe ser un enlace público https://`);
+  }
+  return urlLimpia;
+}
+
 export function validarEnteroEnRango(valor, nombreCampo, min, max) {
   if (!Number.isInteger(valor) || valor < min || valor > max) {
     throw new ErrorDeSolicitud(

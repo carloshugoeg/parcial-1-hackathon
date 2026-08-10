@@ -45,15 +45,24 @@ Todos usan el PIN **1234** (es una demo académica; ver `DECISIONES.md`).
 
 ## Qué puede hacer cada rol
 
-- **Participante**: ver su equipo, mentor y desafío con cuenta regresiva; registrar
-  la entrega (URL de repositorio de GitHub + descripción) antes de la fecha límite;
-  consultar su calificación cuando los jueces evalúan; chatear con el agente.
+- **Participante**: ver su equipo, mentor y desafío con cuenta regresiva;
+  consultar el detalle de los casos publicados (enunciado y recursos de apoyo);
+  registrar la entrega (URL de repositorio de GitHub + descripción) antes de la
+  fecha límite; consultar su calificación cuando los jueces evalúan; chatear
+  con el agente.
 - **Juez**: ver todas las entregas y calificarlas con la rúbrica del evento
   (innovación, funcionalidad, calidad técnica y presentación, 0–25 cada una; la
-  nota se suma automáticamente); usar el detector de plagio del agente.
-- **Organización**: crear equipos y desafíos, agregar integrantes, asignar
-  mentores y ver el estado general de entregas y notas.
-- **Mentor**: seguir el avance de sus equipos asesorados.
+  nota se suma automáticamente); consultar los casos; usar el detector de
+  plagio del agente.
+- **Organización**: **publicar los casos** (resumen, detalle del reto y hasta 5
+  enlaces de recursos), crear equipos, agregar integrantes, asignar mentores y
+  ver el estado general de entregas y notas.
+- **Mentor**: seguir el avance de sus equipos asesorados y consultar los casos.
+
+Todos los roles tienen la pestaña **Desafíos**: la lista muestra cada caso con
+su estado y cuenta regresiva, y «Ver detalle del caso» abre el enunciado
+completo con sus recursos (enlaces públicos a repositorios reales, p. ej.
+OpenTripPlanner, GTFS, Leaflet u ODK Collect) y los equipos inscritos.
 
 ## El agente de IA del evento
 
@@ -73,14 +82,19 @@ código de los participantes** y **no responde fuera de la documentación del ev
 
 ## Guion de demostración sugerido
 
-1. Entrar como `carlos` → ver equipo y cuenta regresiva → **Entregar proyecto**
-   con una URL de GitHub válida (caso exitoso).
+1. Entrar como `carlos` → ver equipo y cuenta regresiva → **Desafíos** → «Ver
+   detalle del caso» (enunciado completo y recursos con repos reales) →
+   **Entregar proyecto** con una URL de GitHub válida, p. ej.
+   `https://github.com/Leaflet/Leaflet` (caso exitoso).
 2. Intentar una URL inválida (caso de error con mensaje claro).
-3. Preguntar al agente "¿cuánto tiempo queda?" y luego pedirle código (se niega).
-4. Salir y entrar como `ernesto` (juez) → evaluar la entrega con la rúbrica →
+3. Entrar como `lucia` (organización) → **Desafíos** → **Publicar un caso**
+   (título, resumen, detalle y enlaces de recursos): queda visible de
+   inmediato para todos los roles.
+4. Preguntar al agente "¿cuánto tiempo queda?" y luego pedirle código (se niega).
+5. Salir y entrar como `ernesto` (juez) → evaluar la entrega con la rúbrica →
    la nota se suma sola. Probar "Ejecutar detector de plagio" en el chat.
-5. Volver a entrar como `carlos` → **Mi calificación** muestra el veredicto.
-6. El desafío "Gestión de residuos" ya está vencido: si `pedro` intenta
+6. Volver a entrar como `carlos` → **Mi calificación** muestra el veredicto.
+7. El desafío "Gestión de residuos" ya está vencido: si `pedro` intenta
    reemplazar la entrega de Bit a Bit, el sistema la rechaza (caso límite).
 
 ## Estructura del proyecto
